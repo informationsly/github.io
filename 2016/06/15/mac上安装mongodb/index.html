@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Mac上安装MongoDB | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="1) 安装brew安装命令如下,并等待完成1curl -LsSf http://github.com/mxcl/homebrew/tarball/master | sudo tar xvz -C/usr/local --strip 1
+2)安装MongoDB安装命令如下,并等待完成1brew install mongodb
+3)运行MongoDB在终端依次输入如下命令1234cd /sudo mk">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mac上安装MongoDB">
+<meta property="og:url" content="http://yoursite.com/2016/06/15/mac上安装mongodb/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1) 安装brew安装命令如下,并等待完成1curl -LsSf http://github.com/mxcl/homebrew/tarball/master | sudo tar xvz -C/usr/local --strip 1
+2)安装MongoDB安装命令如下,并等待完成1brew install mongodb
+3)运行MongoDB在终端依次输入如下命令1234cd /sudo mk">
+<meta property="og:updated_time" content="2016-06-15T16:55:47.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Mac上安装MongoDB">
+<meta name="twitter:description" content="1) 安装brew安装命令如下,并等待完成1curl -LsSf http://github.com/mxcl/homebrew/tarball/master | sudo tar xvz -C/usr/local --strip 1
+2)安装MongoDB安装命令如下,并等待完成1brew install mongodb
+3)运行MongoDB在终端依次输入如下命令1234cd /sudo mk">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-mac上安装mongodb" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/06/15/mac上安装mongodb/" class="article-date">
+  <time datetime="2016-06-15T04:55:27.000Z" itemprop="datePublished">2016-06-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Mac上安装MongoDB
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-安装brew"><a href="#1-安装brew" class="headerlink" title="1) 安装brew"></a>1) 安装brew</h2><p>安装命令如下,并等待完成<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl -LsSf http://github.com/mxcl/homebrew/tarball/master | sudo tar xvz -C/usr/<span class="built_in">local</span> --strip 1</div></pre></td></tr></table></figure></p>
+<h2 id="2-安装MongoDB"><a href="#2-安装MongoDB" class="headerlink" title="2)安装MongoDB"></a>2)安装MongoDB</h2><p>安装命令如下,并等待完成<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">brew install mongodb</div></pre></td></tr></table></figure></p>
+<h2 id="3-运行MongoDB"><a href="#3-运行MongoDB" class="headerlink" title="3)运行MongoDB"></a>3)运行MongoDB</h2><p>在终端依次输入如下命令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> /</div><div class="line">sudo mkdir -p /data/db</div><div class="line">sudo chown -R 电脑用户名 /data/db<span class="comment">#电脑用户名可以通过在终端输入who命令得到</span></div><div class="line">mongod</div></pre></td></tr></table></figure></p>
+<p>启动了MongoDB的服务，返回类似如下信息表示成功：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">2016-06-15T22:46:53.701+0800 I JOURNAL  [initandlisten] journal dir=/data/db/journal  </div><div class="line">2016-06-15T22:46:53.704+0800 I JOURNAL  [initandlisten] recover : no journal files present, no recovery needed  </div><div class="line">2016-06-15T22:46:53.721+0800 I CONTROL  [initandlisten] MongoDB starting : pid=3455 port=27017 dbpath=/data/db 64-bit host=liyongdeMacBook-Pro.local  </div><div class="line">2016-06-15T22:46:53.721+0800 I CONTROL  [initandlisten]  </div><div class="line">2016-06-15T22:46:53.721+0800 I JOURNAL  [durability] Durability thread started  </div><div class="line">2016-06-15T22:46:53.721+0800 I CONTROL  [initandlisten] ** WARNING: soft rlimits too low. Number of files is 256, should be at least 1000  </div><div class="line">2016-06-15T22:46:53.721+0800 I CONTROL  [initandlisten] db version v3.0.7  </div><div class="line">2016-06-15T22:46:53.721+0800 I CONTROL  [initandlisten] git version: nogitversion  </div><div class="line">2016-06-15T22:46:53.721+0800 I JOURNAL  [journal writer] Journal writer thread started  </div><div class="line">2016-06-15T22:46:53.721+0800 I CONTROL  [initandlisten] build info: Darwin elcapitanvm.local 15.0.0 Darwin Kernel Version 15.0.0: Wed Aug 26 16:57:32 PDT 2015; root:xnu-3247.1.106~1/RELEASE_X86_64 x86_64 BOOST_LIB_VERSION=1_49  </div><div class="line">2016-06-15T22:46:53.721+0800 I CONTROL  [initandlisten] allocator: system  </div><div class="line">2016-06-15T22:46:53.721+0800 I CONTROL  [initandlisten] options:   </div><div class="line">2016-06-15T22:46:53.853+0800 I NETWORK  [initandlisten] waiting <span class="keyword">for</span> connections on port 2701</div></pre></td></tr></table></figure></p>
+<p>重新打开一个终端，输入：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mongo</div></pre></td></tr></table></figure></p>
+<p>返回信息如下表示mongodb已经安装成功了：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">MongoDB shell version: 3.0.7  </div><div class="line">connecting to: <span class="built_in">test</span>  </div><div class="line">Server has startup warnings:   </div><div class="line">2016-06-15T22:46:53.721+0800 I CONTROL  [initandlisten]   </div><div class="line">2016-06-15T22:46:53.721+0800 I CONTROL  [initandlisten] ** WARNING: soft rlimits too low. Number of files is 256, should be at least 1000</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/06/15/mac上安装mongodb/" data-id="cj07iuswe0000k3vdxnfgqoem" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/03/04/使用hexo搭建自己的博客/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">使用hexo搭建自己的博客</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/06/15/mac上安装mongodb/">Mac上安装MongoDB</a>
+          </li>
+        
+          <li>
+            <a href="/2016/03/04/使用hexo搭建自己的博客/">使用hexo搭建自己的博客</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Li Yong<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
