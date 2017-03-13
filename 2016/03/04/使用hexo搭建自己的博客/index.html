@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="tags:以前好奇网上别人的独立博客是怎么搭建起来的，后来知道了hexo这个博客框架后也想自己搞一个，刚好第一篇文章就记录一下搭建这个过程，搭建过程主要还是参考hexo的官方文档。
 安装hexo安装hexo之前要求电脑上要安装了Node.js和Git，可以分别使用node –version和git –version检查一下电脑上是否安装了这两个程序，安装Node.js、Git、hexo参照hexo">
-<meta property="og:updated_time" content="2016-06-15T16:49:57.000Z">
+<meta property="og:updated_time" content="2017-03-13T05:17:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用hexo搭建自己的博客">
 <meta name="twitter:description" content="tags:以前好奇网上别人的独立博客是怎么搭建起来的，后来知道了hexo这个博客框架后也想自己搞一个，刚好第一篇文章就记录一下搭建这个过程，搭建过程主要还是参考hexo的官方文档。
@@ -99,11 +99,22 @@
 <p>5.配置自己的域名<br>如何与一个域名做关联，可以参看这个<a href="https://help.github.com/articles/setting-up-an-apex-domain/" target="_blank" rel="external">GitHubHelp</a>,大致的过程就是我们要有一个域名，并做一个域名解析，把域名指向192.30.252.153，192.30.252.154，并在代码仓库下创建一个名字为CNAME的文件，内容就是你的域名名称，文章中说到的A record就是一个记录类型，指将域名指向一个IPv4地址。<br>域名可以在万网上购买，也不是太贵，我买的时候是29元/年，购买成功后你就可以在万网后台做域名解析了。设置了域名解析后，过一段时间，就可以在浏览器里通过域名访问博客了。<br>备注：CNAME文件我们需要把它下载下来放在$ hexo init <folder>命令所指定文件夹的source目录下，这样你下次博客内容改变重新部署后CNAME文件不会丢失。</folder></p>
 <h3 id="更换博客主题"><a href="#更换博客主题" class="headerlink" title="更换博客主题"></a>更换博客主题</h3><p>默认的博客主题不好看，但hexo提供了许多<a href="https://hexo.io/themes/" target="_blank" rel="external">主题</a>，我们可以自己做替换,把选中的主题下载下来放在themes文件夹底下，修改_config.xml文件中的theme属性，将其设置为你选择的主题，然后依次执行:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ hexo clean</div><div class="line">$ hexo g</div><div class="line">$ hexo d</div></pre></td></tr></table></figure></p>
 <p>这样使用域名再次访问的时候看到的就是新的主题界面了。</p>
+<p>###补充<br>后面使用hexo时出现了一些问题：</p>
+<ol>
+<li><p>DTraceProviderBindings MODULE_NOT_FOUND<br>解决办法：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ npm uninstall hexo-cli -g</div><div class="line">$ npm install hexo-cli -g</div></pre></td></tr></table></figure>
+</li>
+<li><p>部署时提示Permission denied (publickey)<br>解决办法：<br>在~/.ssh文件夹下生成ssh key，成功后~/.ssh文件夹下会生成id_rsa和id_rsa.pub两个文件，到github个人账户的”SSH and GPG keys”选项中添加新的SSH key,添加新的key时，title随便填，key为id_rsa.pub文件中的内容。最后删除.deploy_git文件夹。</p>
+</li>
+</ol>
+<p>相关命令：<br>生成ssh key<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ssh-keygen -t rsa -C &lt;邮箱名&gt;</div></pre></td></tr></table></figure></p>
+<p>删除.deploy_git文件夹<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ rm -rf .deploy_git/</div></pre></td></tr></table></figure></p>
+<p>测试是否测试成功<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ssh -T git@github.com</div></pre></td></tr></table></figure></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/04/使用hexo搭建自己的博客/" data-id="cj07iuswo0001k3vdcn96i3ew" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/03/04/使用hexo搭建自己的博客/" data-id="cj07nrduf0001gmxntbd4c62p" class="article-share-link">Share</a>
       
       
     </footer>
