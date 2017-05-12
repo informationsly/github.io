@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="tags:以前好奇网上别人的独立博客是怎么搭建起来的，后来知道了hexo这个博客框架后也想自己搞一个，刚好第一篇文章就记录一下搭建这个过程，搭建过程主要还是参考hexo的官方文档。
 安装hexo安装hexo之前要求电脑上要安装了Node.js和Git，可以分别使用node –version和git –version检查一下电脑上是否安装了这两个程序，安装Node.js、Git、hexo参照hexo">
-<meta property="og:updated_time" content="2017-05-05T07:49:56.000Z">
+<meta property="og:updated_time" content="2017-05-12T05:03:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用hexo搭建自己的博客">
 <meta name="twitter:description" content="tags:以前好奇网上别人的独立博客是怎么搭建起来的，后来知道了hexo这个博客框架后也想自己搞一个，刚好第一篇文章就记录一下搭建这个过程，搭建过程主要还是参考hexo的官方文档。
@@ -57,7 +57,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Zoeken"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -103,10 +103,10 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ hexo clean</div><div class="line">$ hexo g</div><div class="line">$ hexo d</div></pre></td></tr></table></figure>
 <p>这样使用域名再次访问的时候看到的就是新的主题界面了。</p>
 <h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h2><p>后面使用hexo时出现了一些问题：</p>
-<p>###1. DTraceProviderBindings MODULE_NOT_FOUND<br>   解决办法：</p>
+<h3 id="1-DTraceProviderBindings-MODULE-NOT-FOUND"><a href="#1-DTraceProviderBindings-MODULE-NOT-FOUND" class="headerlink" title="1. DTraceProviderBindings MODULE_NOT_FOUND"></a>1. DTraceProviderBindings MODULE_NOT_FOUND</h3><p>   解决办法：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ npm uninstall hexo-cli -g</div><div class="line">$ npm install hexo-cli -g</div></pre></td></tr></table></figure>
-<p>###2. 部署时提示Permission denied (publickey)<br>   解决办法：<br>   在~/.ssh文件夹下生成ssh key，成功后~/.ssh文件夹下会生成id_rsa和id_rsa.pub两个文件，到github个人账户的”SSH and GPG keys”选项中添加新的SSH key,添加新的key时，title随便填，key为id_rsa.pub文件中的内容。最后删除.deploy_git文件夹。</p>
-<p>###3. 相关命令<br>生成ssh key</p>
+<h3 id="2-部署时提示Permission-denied-publickey"><a href="#2-部署时提示Permission-denied-publickey" class="headerlink" title="2. 部署时提示Permission denied (publickey)"></a>2. 部署时提示Permission denied (publickey)</h3><p>   解决办法：<br>   在~/.ssh文件夹下生成ssh key，成功后~/.ssh文件夹下会生成id_rsa和id_rsa.pub两个文件，到github个人账户的”SSH and GPG keys”选项中添加新的SSH key,添加新的key时，title随便填，key为id_rsa.pub文件中的内容。最后删除.deploy_git文件夹。</p>
+<h3 id="3-相关命令"><a href="#3-相关命令" class="headerlink" title="3. 相关命令"></a>3. 相关命令</h3><p>生成ssh key</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ssh-keygen -t rsa -C &lt;邮箱名&gt;</div></pre></td></tr></table></figure>
 <p>删除.deploy_git文件夹</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ rm -rf .deploy_git/</div></pre></td></tr></table></figure>
@@ -116,7 +116,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/04/使用hexo搭建自己的博客/" data-id="cj2ldjdrw0002kss62z1zas2u" class="article-share-link">Delen</a>
+      <a data-url="http://yoursite.com/2016/03/04/使用hexo搭建自己的博客/" data-id="cj2lg3m8q0002yps6a6huwish" class="article-share-link">Share</a>
       
       
     </footer>
@@ -126,7 +126,7 @@
 <nav id="article-nav">
   
     <a href="/2016/06/15/mac上安装mongodb/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Nieuwer</strong>
+      <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
           Mac上安装MongoDB
@@ -154,7 +154,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archieven</h3>
+    <h3 class="widget-title">Archives</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li></ul>
     </div>
@@ -164,12 +164,16 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recente berichten</h3>
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
         
           <li>
-            <a href="/2017/05/07/ES6基础学习/">(no title)</a>
+            <a href="/2017/05/11/ES6基础学习/">ES6基础学习</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/05/响应式网站设计/">响应式网站设计</a>
           </li>
         
           <li>
