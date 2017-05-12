@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="tags:以前好奇网上别人的独立博客是怎么搭建起来的，后来知道了hexo这个博客框架后也想自己搞一个，刚好第一篇文章就记录一下搭建这个过程，搭建过程主要还是参考hexo的官方文档。
 安装hexo安装hexo之前要求电脑上要安装了Node.js和Git，可以分别使用node –version和git –version检查一下电脑上是否安装了这两个程序，安装Node.js、Git、hexo参照hexo">
-<meta property="og:updated_time" content="2017-03-13T05:21:23.000Z">
+<meta property="og:updated_time" content="2017-05-05T07:49:56.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用hexo搭建自己的博客">
 <meta name="twitter:description" content="tags:以前好奇网上别人的独立博客是怎么搭建起来的，后来知道了hexo这个博客框架后也想自己搞一个，刚好第一篇文章就记录一下搭建这个过程，搭建过程主要还是参考hexo的官方文档。
@@ -55,9 +55,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Zoeken"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -94,27 +94,29 @@
 <h3 id="生成静态文件"><a href="#生成静态文件" class="headerlink" title="生成静态文件"></a>生成静态文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo g <span class="comment">##生成静态文件</span></div></pre></td></tr></table></figure>
 <h3 id="开启本地服务"><a href="#开启本地服务" class="headerlink" title="开启本地服务"></a>开启本地服务</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo s <span class="comment">##启动本地服务</span></div></pre></td></tr></table></figure>
 <p>服务启动后就可以在浏览器里输入 <a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a> 查看效果了，特别提醒，如果你的电脑上开启了全局代理的翻墙软件的话，先把代理软件关闭。</p>
-<h2 id="使博客能够通过域名访问"><a href="#使博客能够通过域名访问" class="headerlink" title="使博客能够通过域名访问"></a>使博客能够通过域名访问</h2><p>博客搭建好后，我希望它能够从互联网访问到，具体做法如下：<br>1.在GitHub上新建一个github.io的代码仓库<br>2.修改_config.yml文件中的配置<br>deploy:<br>  type: git<br>  repo: git@github.com:&lt;你自己的github用户名&gt;/github.io.git<br>3.安装git插件hexo-deployer-git<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install hexo-deployer-git --save</div></pre></td></tr></table></figure></p>
-<p>4.部署到github<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo d</div></pre></td></tr></table></figure></p>
+<h2 id="使博客能够通过域名访问"><a href="#使博客能够通过域名访问" class="headerlink" title="使博客能够通过域名访问"></a>使博客能够通过域名访问</h2><p>博客搭建好后，我希望它能够从互联网访问到，具体做法如下：<br>1.在GitHub上新建一个github.io的代码仓库<br>2.修改_config.yml文件中的配置<br>deploy:<br>  type: git<br>  repo: git@github.com:&lt;你自己的github用户名&gt;/github.io.git<br>3.安装git插件hexo-deployer-git</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install hexo-deployer-git --save</div></pre></td></tr></table></figure>
+<p>4.部署到github</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo d</div></pre></td></tr></table></figure>
 <p>5.配置自己的域名<br>如何与一个域名做关联，可以参看这个<a href="https://help.github.com/articles/setting-up-an-apex-domain/" target="_blank" rel="external">GitHubHelp</a>,大致的过程就是我们要有一个域名，并做一个域名解析，把域名指向192.30.252.153，192.30.252.154，并在代码仓库下创建一个名字为CNAME的文件，内容就是你的域名名称，文章中说到的A record就是一个记录类型，指将域名指向一个IPv4地址。<br>域名可以在万网上购买，也不是太贵，我买的时候是29元/年，购买成功后你就可以在万网后台做域名解析了。设置了域名解析后，过一段时间，就可以在浏览器里通过域名访问博客了。<br>备注：CNAME文件我们需要把它下载下来放在$ hexo init <folder>命令所指定文件夹的source目录下，这样你下次博客内容改变重新部署后CNAME文件不会丢失。</folder></p>
-<h3 id="更换博客主题"><a href="#更换博客主题" class="headerlink" title="更换博客主题"></a>更换博客主题</h3><p>默认的博客主题不好看，但hexo提供了许多<a href="https://hexo.io/themes/" target="_blank" rel="external">主题</a>，我们可以自己做替换,把选中的主题下载下来放在themes文件夹底下，修改_config.xml文件中的theme属性，将其设置为你选择的主题，然后依次执行:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ hexo clean</div><div class="line">$ hexo g</div><div class="line">$ hexo d</div></pre></td></tr></table></figure></p>
+<h2 id="更换博客主题"><a href="#更换博客主题" class="headerlink" title="更换博客主题"></a>更换博客主题</h2><p>默认的博客主题不好看，但hexo提供了许多<a href="https://hexo.io/themes/" target="_blank" rel="external">主题</a>，我们可以自己做替换,把选中的主题下载下来放在themes文件夹底下，修改_config.xml文件中的theme属性，将其设置为你选择的主题，然后依次执行:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ hexo clean</div><div class="line">$ hexo g</div><div class="line">$ hexo d</div></pre></td></tr></table></figure>
 <p>这样使用域名再次访问的时候看到的就是新的主题界面了。</p>
-<h3 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h3><p>后面使用hexo时出现了一些问题：</p>
-<ol>
-<li><p>DTraceProviderBindings MODULE_NOT_FOUND<br>解决办法：</p>
+<h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h2><p>后面使用hexo时出现了一些问题：</p>
+<p>###1. DTraceProviderBindings MODULE_NOT_FOUND<br>   解决办法：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ npm uninstall hexo-cli -g</div><div class="line">$ npm install hexo-cli -g</div></pre></td></tr></table></figure>
-</li>
-<li><p>部署时提示Permission denied (publickey)<br>解决办法：<br>在~/.ssh文件夹下生成ssh key，成功后~/.ssh文件夹下会生成id_rsa和id_rsa.pub两个文件，到github个人账户的”SSH and GPG keys”选项中添加新的SSH key,添加新的key时，title随便填，key为id_rsa.pub文件中的内容。最后删除.deploy_git文件夹。</p>
-</li>
-</ol>
-<p>相关命令：<br>生成ssh key<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ssh-keygen -t rsa -C &lt;邮箱名&gt;</div></pre></td></tr></table></figure></p>
-<p>删除.deploy_git文件夹<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ rm -rf .deploy_git/</div></pre></td></tr></table></figure></p>
-<p>测试是否测试成功<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ssh -T git@github.com</div></pre></td></tr></table></figure></p>
+<p>###2. 部署时提示Permission denied (publickey)<br>   解决办法：<br>   在~/.ssh文件夹下生成ssh key，成功后~/.ssh文件夹下会生成id_rsa和id_rsa.pub两个文件，到github个人账户的”SSH and GPG keys”选项中添加新的SSH key,添加新的key时，title随便填，key为id_rsa.pub文件中的内容。最后删除.deploy_git文件夹。</p>
+<p>###3. 相关命令<br>生成ssh key</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ssh-keygen -t rsa -C &lt;邮箱名&gt;</div></pre></td></tr></table></figure>
+<p>删除.deploy_git文件夹</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ rm -rf .deploy_git/</div></pre></td></tr></table></figure>
+<p>测试是否测试成功</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ssh -T git@github.com</div></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/04/使用hexo搭建自己的博客/" data-id="cj07nvt5c0001ivvd5ul7k18y" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2016/03/04/使用hexo搭建自己的博客/" data-id="cj2ldjdrw0002kss62z1zas2u" class="article-share-link">Delen</a>
       
       
     </footer>
@@ -124,7 +126,7 @@
 <nav id="article-nav">
   
     <a href="/2016/06/15/mac上安装mongodb/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Récent</strong>
+      <strong class="article-nav-caption">Nieuwer</strong>
       <div class="article-nav-title">
         
           Mac上安装MongoDB
@@ -152,9 +154,9 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">Archieven</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li></ul>
     </div>
   </div>
 
@@ -162,9 +164,13 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Articles récents</h3>
+    <h3 class="widget-title">Recente berichten</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2017/05/07/ES6基础学习/">(no title)</a>
+          </li>
         
           <li>
             <a href="/2016/06/15/mac上安装mongodb/">Mac上安装MongoDB</a>
@@ -187,7 +193,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2017 Li Yong<br>
-      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
