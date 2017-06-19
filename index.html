@@ -50,7 +50,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Zoeken"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -60,6 +60,41 @@
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-git发布项目到github" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/06/17/git发布项目到github/" class="article-date">
+  <time datetime="2017-06-17T15:35:36.000Z" itemprop="datePublished">2017-06-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="git发布项目到github"><a href="#git发布项目到github" class="headerlink" title="git发布项目到github"></a>git发布项目到github</h1><h2 id="项目的首次创建和提交"><a href="#项目的首次创建和提交" class="headerlink" title="项目的首次创建和提交"></a>项目的首次创建和提交</h2><h4 id="1-初始化项目"><a href="#1-初始化项目" class="headerlink" title="1. 初始化项目"></a>1. 初始化项目</h4><p>创建<code>.gitignore</code>文件，在<code>.gitignore</code>中编写规则，说明那些文件不用纳入版本管理，使用git初始化项目。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">touch .gitignore</div><div class="line">git init</div></pre></td></tr></table></figure>
+<h4 id="2-把项目下的文件纳入版本管理"><a href="#2-把项目下的文件纳入版本管理" class="headerlink" title="2. 把项目下的文件纳入版本管理"></a>2. 把项目下的文件纳入版本管理</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git add .</div></pre></td></tr></table></figure>
+<h4 id="3-提交项目文件到本地仓库"><a href="#3-提交项目文件到本地仓库" class="headerlink" title="3. 提交项目文件到本地仓库"></a>3. 提交项目文件到本地仓库</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git commit -am <span class="string">'first commit init project'</span></div></pre></td></tr></table></figure>
+<h4 id="4-提交项目到github"><a href="#4-提交项目到github" class="headerlink" title="4. 提交项目到github"></a>4. 提交项目到github</h4><p>提交前先在github上创建一个和本地同名的项目，然后在本地使用git pull拉取文件和本地项目合并后，再提交项目。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">git remote add origin git@github.com:informationsly/mmall.git</div><div class="line">git branch</div><div class="line">git pull</div><div class="line">git push -u <span class="_">-f</span> origin master</div></pre></td></tr></table></figure>
+<h4 id="5-创建v1-0分支，后续采取分支开发，主分支发布的方式"><a href="#5-创建v1-0分支，后续采取分支开发，主分支发布的方式" class="headerlink" title="5. 创建v1.0分支，后续采取分支开发，主分支发布的方式"></a>5. 创建<code>v1.0</code>分支，后续采取分支开发，主分支发布的方式</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git checkout -b v1.0 origin/master</div><div class="line">git branch //查看当前所处分支，结果应该是在v1.0分支上</div><div class="line">git push origin HEAD -u //推送v1.0分支到远端仓库</div></pre></td></tr></table></figure>
+<h2 id="后续代码增加后新代码的提交"><a href="#后续代码增加后新代码的提交" class="headerlink" title="后续代码增加后新代码的提交"></a>后续代码增加后新代码的提交</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">git status //确定分支在`v1.0上`</div><div class="line">git add .</div><div class="line">git status</div><div class="line">git commit -am <span class="string">'project init commit'</span></div><div class="line">git push //推送到远端的`v1.0`分支上</div><div class="line">git status</div></pre></td></tr></table></figure>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>mybatis_plugin 破解：<br><a href="http://blog.csdn.net/u011410529/article/details/54098067" target="_blank" rel="external">http://blog.csdn.net/u011410529/article/details/54098067</a><br>intellij idea 破解：<br><a href="http://www.cnblogs.com/hongyanzhao/p/6933170.html" target="_blank" rel="external">http://www.cnblogs.com/hongyanzhao/p/6933170.html</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/06/17/git发布项目到github/" data-id="cj43kte9z0003dwxnkvz8y6s2" class="article-share-link">Delen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-ES6基础学习" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -132,7 +167,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/05/11/ES6基础学习/" data-id="cj2lg3m8i0000yps65z26jcdg" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/05/11/ES6基础学习/" data-id="cj43kte9l0001dwxn7cl8hcv7" class="article-share-link">Delen</a>
       
       
     </footer>
@@ -250,7 +285,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/05/05/响应式网站设计/" data-id="cj2lg3m8r0003yps6kiq7glxy" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/05/05/响应式网站设计/" data-id="cj43ktea10004dwxnzb4f23bo" class="article-share-link">Delen</a>
       
       
     </footer>
@@ -292,7 +327,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/06/15/mac上安装mongodb/" data-id="cj2lg3m8n0001yps6c3oe6nmu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/06/15/mac上安装mongodb/" data-id="cj43kte9x0002dwxnik9r4jft" class="article-share-link">Delen</a>
       
       
     </footer>
@@ -352,7 +387,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/04/使用hexo搭建自己的博客/" data-id="cj2lg3m8q0002yps6a6huwish" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/03/04/使用hexo搭建自己的博客/" data-id="cj43kte9h0000dwxnppsl98bf" class="article-share-link">Delen</a>
       
       
     </footer>
@@ -377,9 +412,9 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">Archieven</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li></ul>
     </div>
   </div>
 
@@ -387,9 +422,13 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">Recente berichten</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2017/06/17/git发布项目到github/">(no title)</a>
+          </li>
         
           <li>
             <a href="/2017/05/11/ES6基础学习/">ES6基础学习</a>
