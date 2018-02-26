@@ -48,9 +48,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -60,6 +60,80 @@
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-云服务器线上环境搭建" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/02/20/云服务器线上环境搭建/" class="article-date">
+  <time datetime="2018-02-20T04:32:59.431Z" itemprop="datePublished">2018-02-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="云服务器线上环境搭建"><a href="#云服务器线上环境搭建" class="headerlink" title="云服务器线上环境搭建"></a>云服务器线上环境搭建</h1><h2 id="云服务器配置YUM源安装软件"><a href="#云服务器配置YUM源安装软件" class="headerlink" title="云服务器配置YUM源安装软件"></a>云服务器配置YUM源安装软件</h2><p>略</p>
+<h2 id="linux安装jdk"><a href="#linux安装jdk" class="headerlink" title="linux安装jdk"></a>linux安装jdk</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">rpm -qa | grep jdk /*检查linux是否安装有openjdk，有则移除</div><div class="line">sudo yum remove xxx(xxx为上一个命令查到的结果)</div><div class="line"><span class="built_in">cd</span> /</div><div class="line">sudo mkdir developer</div><div class="line"><span class="built_in">cd</span> developer/</div><div class="line">sudo mkdir setup</div><div class="line"><span class="built_in">cd</span> setup</div><div class="line">sudo wget &lt;官网下载地址&gt;</div><div class="line">sudo mv &lt;a&gt; &lt;b&gt; /*a重命名为b</div><div class="line">sudo chmod 777 jdk-7u80-linux-x64.rpm /*赋予执行权限</div><div class="line">sudo rpm -ivh jdk-7u80-linux-x64.rpm /*安装jdk</div></pre></td></tr></table></figure>
+<h3 id="查看安装后的jdk"><a href="#查看安装后的jdk" class="headerlink" title="查看安装后的jdk"></a>查看安装后的jdk</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> /usr/java/jdk1.7.0_80/</div><div class="line">ll</div></pre></td></tr></table></figure>
+<h2 id="安装vim"><a href="#安装vim" class="headerlink" title="安装vim"></a>安装vim</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum -y install vim</div></pre></td></tr></table></figure>
+<h2 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo vim /etc/profile</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">export</span> JAVA_HOME=/usr/java/jdk1.7.0_80</div><div class="line"><span class="built_in">export</span> CLASSPATH=.:<span class="variable">$JAVA_HOME</span>/jre/lib/rt.jar:<span class="variable">$JAVA_HOME</span>/lib/dt.jar:<span class="variable">$JAVA_HOME</span>/lib/tools.jar</div><div class="line"><span class="built_in">export</span> MAVEN_HOME=/developer/apache-maven-3.0.5</div><div class="line"><span class="built_in">export</span> NODE_HOME=/usr/<span class="built_in">local</span>/node-v4.4.7-linux-x64</div><div class="line"><span class="built_in">export</span> RUBY_HOME=/usr/<span class="built_in">local</span>/ruby</div><div class="line"><span class="built_in">export</span> CATALINA_HOME=/developer/apache-tomcat-7.0.73</div><div class="line"></div><div class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$JAVA_HOME</span>/bin:<span class="variable">$CATALINA_HOME</span>/bin:<span class="variable">$MAVEN_HOME</span>/bin:<span class="variable">$NODE_HOME</span>/bin:/usr/<span class="built_in">local</span>/bin:<span class="variable">$RUBY_HOME</span>/bin</div><div class="line"></div><div class="line"><span class="built_in">export</span> LC_ALL=en_US.UTF-8</div></pre></td></tr></table></figure>
+<h3 id="使配置生效"><a href="#使配置生效" class="headerlink" title="使配置生效"></a>使配置生效</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">source</span> /etc/profile</div></pre></td></tr></table></figure>
+<h2 id="安装tomcat"><a href="#安装tomcat" class="headerlink" title="安装tomcat"></a>安装tomcat</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> /developer</div><div class="line">sudo wget &lt;tomcat下载路径&gt;</div><div class="line">sudo tar -zxvf &lt;tomcat安装包&gt;</div><div class="line">sudo mv &lt;tomcat安装包&gt; setup/ /*把安装包整理到setup下</div></pre></td></tr></table></figure>
+<h3 id="修改tomcat字符集"><a href="#修改tomcat字符集" class="headerlink" title="修改tomcat字符集"></a>修改tomcat字符集</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> apache-tomcat-7.0.73/</div><div class="line">sudo vim conf/server.xml</div></pre></td></tr></table></figure>
+<p>修改结果如下：<br><img src="media/15191011794293/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-02-20%20%E4%B8%8B%E5%8D%882.32.54.png" alt="屏幕快照 2018-02-20 下午2.32.54"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> bin</div><div class="line">./startup.sh /*启动tomcat</div></pre></td></tr></table></figure>
+<h2 id="安装maven"><a href="#安装maven" class="headerlink" title="安装maven"></a>安装maven</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> /developer</div><div class="line">sudo wget &lt;maven安装包&gt;</div><div class="line">sudo tar -zxvf &lt;maven安装包&gt;</div><div class="line">sudo mv &lt;maven安装包&gt; setup/</div><div class="line">mvn -version /*验证是否安装成功</div></pre></td></tr></table></figure>
+<h2 id="安装vsftpd"><a href="#安装vsftpd" class="headerlink" title="安装vsftpd"></a>安装vsftpd</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo yum -y install vsftpd</div></pre></td></tr></table></figure>
+<h3 id="创建访问目录并附加权限"><a href="#创建访问目录并附加权限" class="headerlink" title="创建访问目录并附加权限"></a>创建访问目录并附加权限</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> /</div><div class="line">sudo mkdir product</div><div class="line"><span class="built_in">cd</span> product/</div><div class="line">sudo mkdir ftpfile</div><div class="line">sudo useradd ftpuser <span class="_">-d</span> /product/ftpfile <span class="_">-s</span> /sbin/nologin</div><div class="line">sudo chown -R ftpuser.ftpuser ./ftpfile/ /*设置用户及用户组的权限都为ftpuser</div></pre></td></tr></table></figure>
+<h3 id="重置ftpuser的访问密码"><a href="#重置ftpuser的访问密码" class="headerlink" title="重置ftpuser的访问密码"></a>重置ftpuser的访问密码</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">sudo passwd ftpuser</div><div class="line"><span class="built_in">cd</span> /etc/vsftpd</div><div class="line">sudo vim chroot_list</div><div class="line">在chroot_list中添加一行ftpuser</div></pre></td></tr></table></figure>
+<h3 id="修改安全策略"><a href="#修改安全策略" class="headerlink" title="修改安全策略"></a>修改安全策略</h3><p>sudo vim /etc/selinux/config<br>修改SELINUX的值为disabled</p>
+<p>等同于使用如下命令：<br>sudo setsebool -P ftp_home_dir 1</p>
+<h3 id="修改vsftpd-conf文件"><a href="#修改vsftpd-conf文件" class="headerlink" title="修改vsftpd.conf文件"></a>修改vsftpd.conf文件</h3><p>先备份原文件<br>sudo mv vsftpd.conf vsftpd.conf.bak<br>sudo wget &lt;新文件地址&gt;</p>
+<h3 id="验证vsftpd访问性"><a href="#验证vsftpd访问性" class="headerlink" title="验证vsftpd访问性"></a>验证vsftpd访问性</h3><p>sudo service vsftpd restart<br>浏览器访问：ftp://&lt;服务器地址&gt;</p>
+<h2 id="安装nginx"><a href="#安装nginx" class="headerlink" title="安装nginx"></a>安装nginx</h2><p>cd /developer/setup/<br>sudo wget <nginx下载地址></nginx下载地址></p>
+<h3 id="安装nginx所需依赖"><a href="#安装nginx所需依赖" class="headerlink" title="安装nginx所需依赖"></a>安装nginx所需依赖</h3><p>nginx安装依赖命令<br>sudo yum -y install gcc zlib zlib-devel pcre-devel openssl openssl-devel </p>
+<h3 id="解压nginx"><a href="#解压nginx" class="headerlink" title="解压nginx"></a>解压nginx</h3><p>sudo tar -zxvf linux-nginx-1.10.2.tar.gz<br>cd nginx-1.10.2/<br>sudo ./configure /*编译解压<br>sudo make<br>sudo make install</p>
+<h3 id="编辑nginx"><a href="#编辑nginx" class="headerlink" title="编辑nginx"></a>编辑nginx</h3><p>whereis nginx<br>cd /usr/local/nginx/conf/<br>sudo vim nginx.conf<br>添加一行：include vhost/<em>.conf; /</em>分号不能少</p>
+<h3 id="添加反向代理的配置文件"><a href="#添加反向代理的配置文件" class="headerlink" title="添加反向代理的配置文件"></a>添加反向代理的配置文件</h3><p>sudo mkdir vhost<br>cd vhost/<br>添加配置文件到vhost下</p>
+<h3 id="启动nginx"><a href="#启动nginx" class="headerlink" title="启动nginx"></a>启动nginx</h3><p>cd /usr/local/nginx/sbin<br>sudo ./nginx</p>
+<h3 id="查看nginx是否已经启动"><a href="#查看nginx是否已经启动" class="headerlink" title="查看nginx是否已经启动"></a>查看nginx是否已经启动</h3><p>ps -ef | grep nginx</p>
+<h3 id="重启nginx"><a href="#重启nginx" class="headerlink" title="重启nginx"></a>重启nginx</h3><p>/usr/nginx/sbin/nginx -s reload</p>
+<h2 id="安装mysql"><a href="#安装mysql" class="headerlink" title="安装mysql"></a>安装mysql</h2><h3 id="检查是否安装了mysql"><a href="#检查是否安装了mysql" class="headerlink" title="检查是否安装了mysql"></a>检查是否安装了mysql</h3><p>sudo rpm -qa | grep mysql-server </p>
+<h3 id="使用yum安装mysql"><a href="#使用yum安装mysql" class="headerlink" title="使用yum安装mysql"></a>使用yum安装mysql</h3><p>sudo yum -y install mysql-server</p>
+<h3 id="修改mysql字符集"><a href="#修改mysql字符集" class="headerlink" title="修改mysql字符集"></a>修改mysql字符集</h3><p>sudo vim /etc/my.cnf<br><img src="media/15191011794293/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-02-20%20%E4%B8%8B%E5%8D%883.48.27.png" alt="屏幕快照 2018-02-20 下午3.48.27"></p>
+<h3 id="配置mysql的自启动"><a href="#配置mysql的自启动" class="headerlink" title="配置mysql的自启动"></a>配置mysql的自启动</h3><p>sudo chkconfig mysqld on<br>sudo chkconfig –list mysqld<br>sudo service mysqld restart</p>
+<h3 id="修改root密码"><a href="#修改root密码" class="headerlink" title="修改root密码"></a>修改root密码</h3><p>mysql -u root<br>select user,host,password from mysql.user<br>set password for root@localhost = password(‘自己设置的密码’); /*localhost,云服务器名，127.0.0.1分别设置一次</p>
+<h3 id="删除匿名用户"><a href="#删除匿名用户" class="headerlink" title="删除匿名用户"></a>删除匿名用户</h3><p>exit<br>mysql -u root -p<br>delete from mysql.user where user=’’;<br>flush privileges;</p>
+<h3 id="插入一个新用户"><a href="#插入一个新用户" class="headerlink" title="插入一个新用户"></a>插入一个新用户</h3><p>insert into mysql.user(host,user,password) values (“localhost”,”xxx”, password(“xxxx”))<br>flush privileges;</p>
+<h3 id="创建数据库实例"><a href="#创建数据库实例" class="headerlink" title="创建数据库实例"></a>创建数据库实例</h3><p>create database <code>xxx</code> default character set utf8 COLLATE utf8_general_ci;</p>
+<h3 id="给新用户授予使用xxx数据库的所有权限"><a href="#给新用户授予使用xxx数据库的所有权限" class="headerlink" title="给新用户授予使用xxx数据库的所有权限"></a>给新用户授予使用xxx数据库的所有权限</h3><p>grant all privileges on 数据库实例名.* to 新用户名@localhost identified by ‘新用户密码’;</p>
+<h3 id="向数据库填充数据"><a href="#向数据库填充数据" class="headerlink" title="向数据库填充数据"></a>向数据库填充数据</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">把xxx.sql文件放在linux服务器的/developer目录下</div><div class="line">mysql -u root -p</div><div class="line">show databases;</div><div class="line">use 数据库实例名</div><div class="line">show tables</div></pre></td></tr></table></figure>
+<h3 id="导入表"><a href="#导入表" class="headerlink" title="导入表"></a>导入表</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">source</span> /developer/xxx.sql</div><div class="line">show tables;</div><div class="line">select * from 库中任意表名\G; /*格式化显示指定表中的数据</div></pre></td></tr></table></figure>
+<h2 id="git的安装"><a href="#git的安装" class="headerlink" title="git的安装"></a>git的安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> /developer/setup</div><div class="line">sudo wget &lt;git下载路径&gt;</div></pre></td></tr></table></figure>
+<h3 id="安装git依赖"><a href="#安装git依赖" class="headerlink" title="安装git依赖"></a>安装git依赖</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo yum -y install zlib-devel openssl-devel cpio expat-devel gettext-devel curl-devel perl-ExtUtils-CBuilder perl-ExtUtils- MakeMaker</div></pre></td></tr></table></figure>
+<h3 id="解压git压缩包"><a href="#解压git压缩包" class="headerlink" title="解压git压缩包"></a>解压git压缩包</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">sudo tar -zxvf git-v2.8.0.tar.gz </div><div class="line"><span class="built_in">cd</span> git-2.8.0/</div><div class="line">sudo make prefix=/usr/<span class="built_in">local</span>/git all</div><div class="line">sudo make prefix=/usr/<span class="built_in">local</span>/git install</div><div class="line">whereis git</div></pre></td></tr></table></figure>
+<h3 id="git安装路径加入环境变量"><a href="#git安装路径加入环境变量" class="headerlink" title="git安装路径加入环境变量"></a>git安装路径加入环境变量</h3> <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo vim /etc/profile</div></pre></td></tr></table></figure>
+<p><img src="media/15191011794293/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-02-20%20%E4%B8%8B%E5%8D%884.54.26.png" alt="屏幕快照 2018-02-20 下午4.54.26"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">source</span> /etc/profile</div><div class="line">git --version</div></pre></td></tr></table></figure>
+<h3 id="配置git用户名"><a href="#配置git用户名" class="headerlink" title="配置git用户名"></a>配置git用户名</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">git config --global user.name <span class="string">"xxx"</span></div><div class="line">git config --global user.email <span class="string">"xxxx@xx"</span></div><div class="line">git config --global core.autocrlf <span class="literal">false</span> /*忽略linux和windows换行符差异</div><div class="line">git config --global core.quotepath off /*避免中文乱码</div><div class="line">git config --global gui.encoding utf-8</div></pre></td></tr></table></figure>
+<h3 id="配置ssh"><a href="#配置ssh" class="headerlink" title="配置ssh"></a>配置ssh</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">ssh-keygen -t rsa -C <span class="string">"邮箱"</span></div><div class="line">ssh-add ~/.ssh/id_rsa</div><div class="line"><span class="built_in">eval</span> `ssh-agent`</div><div class="line">ssh-add ~/.ssh/id_rsa</div><div class="line">cat ~/.ssh/id_rsa.pub /*显示公钥</div><div class="line">公钥可以给托管用户代码的网站</div></pre></td></tr></table></figure>
+<h2 id="防火墙的设置"><a href="#防火墙的设置" class="headerlink" title="防火墙的设置"></a>防火墙的设置</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> /etc/sysconfig/</div><div class="line">ll | grep ipt /*查找iptables</div><div class="line">sudo mv iptables iptables.bak</div><div class="line">sudo wget &lt;防火墙配置文件地址&gt;</div></pre></td></tr></table></figure>
+<h3 id="修改替换后的iptables文件，关闭3306，8080，5005端口"><a href="#修改替换后的iptables文件，关闭3306，8080，5005端口" class="headerlink" title="修改替换后的iptables文件，关闭3306，8080，5005端口"></a>修改替换后的iptables文件，关闭3306，8080，5005端口</h3><h3 id="重启防火墙"><a href="#重启防火墙" class="headerlink" title="重启防火墙"></a>重启防火墙</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo service iptables restart</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/02/20/云服务器线上环境搭建/" data-id="cje4dfi9100044e0cyggbtkf6" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-git发布项目到github" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -96,7 +170,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/06/19/git发布项目到github/" data-id="cj43l3ihz0002epxnaofdglos" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2017/06/19/git发布项目到github/" data-id="cje4dfi8u00014e0cyo3k77un" class="article-share-link">Share</a>
       
       
     </footer>
@@ -177,7 +251,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/05/11/ES6基础学习/" data-id="cj43l3ihx0001epxnclpf631l" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2017/05/11/ES6基础学习/" data-id="cje4dfi8o00004e0cmyagl6xv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -295,7 +369,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/05/05/响应式网站设计/" data-id="cj43l3ii10003epxnk7cimg1p" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2017/05/05/响应式网站设计/" data-id="cje4dfi9300054e0c4xldrngv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -337,7 +411,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/06/15/mac上安装mongodb/" data-id="cj43l3ihr0000epxnuu987abc" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2016/06/15/mac上安装mongodb/" data-id="cje4dfi8x00024e0ch2ke77yx" class="article-share-link">Share</a>
       
       
     </footer>
@@ -397,7 +471,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/04/使用hexo搭建自己的博客/" data-id="cj43l3ii40004epxne60lr491" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2016/03/04/使用hexo搭建自己的博客/" data-id="cje4dfi8y00034e0clp7dpikw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -424,7 +498,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li></ul>
     </div>
   </div>
 
@@ -432,9 +506,13 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Articles récents</h3>
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2018/02/20/云服务器线上环境搭建/">(no title)</a>
+          </li>
         
           <li>
             <a href="/2017/06/19/git发布项目到github/">git发布项目到github</a>
@@ -452,10 +530,6 @@
             <a href="/2016/06/15/mac上安装mongodb/">Mac上安装MongoDB</a>
           </li>
         
-          <li>
-            <a href="/2016/03/04/使用hexo搭建自己的博客/">使用hexo搭建自己的博客</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -468,8 +542,8 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2017 Li Yong<br>
-      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      &copy; 2018 Li Yong<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
